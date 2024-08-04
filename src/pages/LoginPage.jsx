@@ -4,13 +4,17 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useFireBase } from '../context/FireBase';
 import { useAlert } from '../context/AlertContext';
+import Alert from 'react-bootstrap/Alert';
+import { useAlert } from '../context/AlertContext';
 
 export default function LoginPage() {
     const { signInUserWithEmailAndPassword, signInWithGoogle } = useFireBase();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { showAlert } = useAlert();
+    const { alert, hideAlert } = useAlert();
+
+
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -41,6 +45,15 @@ export default function LoginPage() {
 
     return (
         <div className="container mt-5">
+            {alert.show && (
+                <Alert
+                    variant={alert.variant}
+                    dismissible
+                    onClose={hideAlert}
+                >
+                    {alert.message}
+                </Alert>
+            )}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
