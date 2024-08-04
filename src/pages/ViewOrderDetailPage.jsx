@@ -27,6 +27,10 @@ export default function ViewOrderDetailPage() {
         try {
             await updateOrderStatus(params.bookId, orderId, status);
             setAlert({ variant: 'success', message: `Order ${status} successfully!` });
+
+            // Re-fetch the orders to update the list
+            const updatedOrders = await getOrders(params.bookId);
+            setOrders(updatedOrders.docs);
         } catch (error) {
             console.error("Error updating order status:", error);
             setAlert({ variant: 'danger', message: `Failed to ${status} order.` });
