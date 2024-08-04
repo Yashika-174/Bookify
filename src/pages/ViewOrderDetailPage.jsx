@@ -37,6 +37,7 @@ export default function ViewOrderDetailPage() {
         }
     };
 
+
     if (!orders || orders.length === 0) {
         return (
             <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
