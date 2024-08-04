@@ -5,14 +5,13 @@ import Form from 'react-bootstrap/Form';
 import { useFireBase } from '../context/FireBase';
 import { useAlert } from '../context/AlertContext';
 import Alert from 'react-bootstrap/Alert';
-import { useAlert } from '../context/AlertContext';
 
 export default function LoginPage() {
     const { signInUserWithEmailAndPassword, signInWithGoogle } = useFireBase();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { alert, hideAlert } = useAlert();
+    const { alert, hideAlert, showAlert } = useAlert();
 
 
 
