@@ -42,7 +42,7 @@ export default function BookDetailsPage() {
     async function handlePlaceOrder() {
         if (!user) {
             showAlert('You need to be logged in to place an order.', 'warning');
-            navigate('/login'); // Redirect to login page
+            setTimeout(() => navigate('/login'), 500); // Redirect to login page
             return;
         }
 
