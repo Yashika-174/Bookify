@@ -40,6 +40,12 @@ export default function BookDetailsPage() {
     }, [data, getImageURL]);
 
     async function handlePlaceOrder() {
+        if (!user) {
+            showAlert('You need to be logged in to place an order.', 'warning');
+            navigate('/login'); // Redirect to login page
+            return;
+        }
+
         try {
             await placeOrder(params.bookId, qty);
             showAlert('Order placed successfully!', 'success');
